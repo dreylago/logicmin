@@ -1,0 +1,9 @@
+build/*
+iss/*
+out/*
+*.pyc
+*.pyo
+dist/
+examples/
+extras/
+v2/
