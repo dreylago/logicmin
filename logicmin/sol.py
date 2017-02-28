@@ -27,11 +27,13 @@ class Sol:
 		print "%s <= %s" % (f, SOP)
 
 	def printInfo(self, fname):
+		
 		mincubes = []
 		for minterm in self.m:
 			cube = minterm_to_cube(minterm,self.X_MAX_VARS)
 			mincubes.append(cube)
 		canonical_cost = cubes_cost(mincubes)
+
 		min_cost = self.cost()
 		r = 100.0 * (min_cost - canonical_cost) / canonical_cost
 		s = ''
@@ -42,7 +44,7 @@ class Sol:
 		print '%s: ------------------------' % (fname)
 		#print 'minterms: ', self.m;
 		#print "Cubes: %s" % (s)	
-		print "cost minimal: %.1f cost canonical %.1f (%.1f%%)" % (
+		print "Cost minimal: %.1f. Canonical: %.1f (%.1f%%)" % (
 			min_cost,canonical_cost,r
 		)
 		print 'comps:', self.comps, ', iterations:', self.iterations, ', minimal?:', self.minimal;
@@ -62,6 +64,7 @@ class Sol:
 		if info:
 			for j in range(Y_MAX_VARS):
 				sols[j].printInfo(ynames[Y_MAX_VARS-j-1])
+
 
 	def cost(self, gc=1, tc=1):
 		return cubes_cost(self.cubes, gc, tc)
