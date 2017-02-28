@@ -12,7 +12,7 @@ Look into examples/ directory.
  	1. git clone or download sources
 	2. Install with pip 
 
-		```bash
-		cd /path/to/logicmin
-		pip install .
-		````
+```bash
+cd /path/to/logicmin
+pip install .
+````
