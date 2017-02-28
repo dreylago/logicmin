@@ -11,8 +11,11 @@ def get_maxterms( MAX_VARS, minterms, dc ):
 
 
 ##MINIMIZATION#############################################################
-# McCLUSKEY
-# WAKERLY
+# Edward J. McCluskey. 1986. Logic Design Principles with Emphasis on Testable 
+# Semicustom Circuits. Prentice-Hall, Inc., Upper Saddle River, NJ, USA. 
+# 
+# John F. Wakerly. 1989. Digital Design Principles and Practices.
+# Prentice-Hall, Inc., Upper Saddle River, NJ, USA.
 
 
 def prime_implicants( MAX_VARS, minterms, dc=None ):
@@ -148,7 +151,7 @@ def solve_PIT( Cubes, minterms ):
         if cnt == cols:
             done = True
         else:
-            # print "remove essencial rows"
+            # print "remove essential rows"
             NMarked = []
             for r,c in VMarked:
                 if not Select[r] and not Covered[c]:
@@ -268,20 +271,3 @@ def solve_PIT( Cubes, minterms ):
     return (OutCubes,minimal,iter)
 
 
-###### misc ##########
-
-#Binary with fixed length, W.J. van der Laan, 2003/11/05
-# Python Cookbook
-
-def tobin(x, count=8):
-        """
-        Integer to binary
-        Count is number of bits
-        """
-        return "".join(map(lambda y:str((x>>y)&1), range(count-1, -1, -1)))
-
-
-    
-def todec(s):
-    count = len(s)
-    return sum(map(lambda y: int(s[count-1-y])*(2**y), range(count-1, -1, -1)))

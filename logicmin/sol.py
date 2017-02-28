@@ -1,30 +1,20 @@
-from texpr import *
 from cube import *
+from sop import SOP
 
 # Logic minimization solution 
-class Sol:
+
+class Sol(SOP):
 
 	def __init__(self, X_MAX_VARS, m, cubes, comps, minimal, iterations):
+		SOP.__init__(self,X_MAX_VARS,cubes)
 		self.m = m
-		self.cubes = cubes
 		self.comps = comps
 		self.minimal = minimal
 		self.iterations = iterations
-		self.X_MAX_VARS = X_MAX_VARS
 
-	def printSol(self, f='y', xnames=None, syntax=None):
-		if (xnames is None):
-			xnames = []
-			for j in range(self.X_MAX_VARS-1,-1,-1):
-				xnames.append("x%d"%j)
-		SOP = None
-		if syntax is None:
-			SOP = Exp2L(self.cubes, xnames)
-		elif syntax=='VHDL':
-			SOP = Exp2VHDL(self.cubes, xnames)
-		else:
-			SOP = Exp2VHDL(self.cubes, xnames)
-		print "%s <= %s" % (f, SOP)
+	def printSol(self, yname='y', xnames=None, syntax=None):
+		s = self.expr(xnames, syntax)
+		print "%s <= %s" % (yname, s)
 
 	def printInfo(self, fname):
 		
@@ -65,7 +55,4 @@ class Sol:
 			for j in range(Y_MAX_VARS):
 				sols[j].printInfo(ynames[Y_MAX_VARS-j-1])
 
-
-	def cost(self, gc=1, tc=1):
-		return cubes_cost(self.cubes, gc, tc)
 	
