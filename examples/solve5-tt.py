@@ -2,7 +2,6 @@
 # encoding: UTF-8
 
 from logicmin.tt import TT
-from logicmin.sol import Sol
 from timeit import default_timer as timer
 
 
@@ -43,10 +42,9 @@ def main():
 	t.addRow("11111","01111101")
 
 	start = timer()
-	sols = t.Solve()
+	sols = t.solve()
 	end = timer()
-
-	Sol.printN(sols)
+	sols.printN()
 
 	print "Solved in %f s." % (end-start)
 

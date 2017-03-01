@@ -34,7 +34,7 @@ class FSM:
 	# nss: next state
 	# vo: output variables
 	
-	def Add(self, vi, ss, nss, vo):
+	def add(self, vi, ss, nss, vo):
 		cubes = CubeExpandLHS(vi, self.VI_MAX_VARS)
 		for ci in cubes:
 			co = CombToCube(vo,self.VO_MAX_VARS);
@@ -42,7 +42,7 @@ class FSM:
 				self.t[ss] = {}
 			self.t[ss][ci] = {'co':co,'nss':nss}
 
-	def Assign(self):
+	def assign(self):
 		for ss,h in self.t.iteritems():
 			for ci,data in h.iteritems():
 				data['sc'] = self.assignment_cubes[ss].Copy()
@@ -50,17 +50,15 @@ class FSM:
 			
 	
 	# Assign binary codes to states
-	def AssignCodes(self,assignment_codes):
+	def assignCodes(self,assignment_codes):
 		for ss,code in assignment_codes.iteritems():
 #			print "ss=",ss," code=",code
 			self.assignment_cubes[ss]=num_to_cube(code,self.N_BITS)
 
-	
 	def AssignOneCode(self,symbol,code):
 		cube = num_to_cube(code,self.N_BITS)
 		self.assignment_cubes[symbol] = cube
-			
-			
+					
 	def AssignmentVector(self,state,vector):
 		l = len(vector)
 		for i in range(l):
@@ -68,8 +66,7 @@ class FSM:
 			code = vector[i]
 			self.assignment_cubes[ss]=num_to_cube(code,self.N_BITS)
 	
-	
-	def SolveD(self):
+	def solveD(self):
 		x_max_vars = self.VI_MAX_VARS + self.N_BITS
 		y_max_vars = self.VO_MAX_VARS + self.N_BITS # ff-d
 #		print "x_max_vars=",x_max_vars,"y_max_vars=",y_max_vars
@@ -79,10 +76,9 @@ class FSM:
 				xc = ci.Concat(data['sc'])
 				yc = data['nsc'].Concat(data['co']) 
 #				print "ss=",ss,"xc=",xc,"yc=",yc
-				tt.AddRow(xc,yc)
-				
-		tt.Solve()
-		return tt;
+				tt.addCubes(xc,yc)
+
+		return tt.solve()
 	
 	def JKCube(self,sc,nsc):
 		comb = "";
@@ -112,9 +108,8 @@ class FSM:
 				JKCube = self.JKCube(data['sc'],data['nsc'])
 				yc = JKCube.Concat(data['co']) 
 #				print "ss=",ss,"xc=",xc,"yc=",yc
-				tt.AddRow(xc,yc)
-		tt.Solve()
-		return tt;
+				tt.addCubes(xc,yc)
+		return tt.solve()
 
 	def StrAssign(self):
 		o = ""
@@ -123,12 +118,6 @@ class FSM:
 			o = o + '[' + ss + ':'  + str(cube.Value()) + ']'
 		return o
 	
-	def SolveMode(self,mode='D'):
-		if mode=='D':
-			return self.SolveD()
-		if mode=='JK':
-			return self.SolveJK()
-		return None
 		
 		
 				

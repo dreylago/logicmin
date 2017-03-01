@@ -9,8 +9,6 @@ def tobin(x, count=8):
         """
         return "".join(map(lambda y:str((x>>y)&1), range(count-1, -1, -1)))
 
-
-    
 def todec(s):
     count = len(s)
     return sum(map(lambda y: int(s[count-1-y])*(2**y), range(count-1, -1, -1)))

@@ -39,20 +39,6 @@ class Sol(SOP):
 		)
 		print 'comps:', self.comps, ', iterations:', self.iterations, ', minimal?:', self.minimal;
 
-	@staticmethod
-	def printN(sols, xnames=None, ynames=None, syntax=None, info=False):
-		Y_MAX_VARS = len(sols)
-
-		if (ynames is None):
-			ynames = []
-			for j in range(Y_MAX_VARS-1,-1,-1):
-				ynames.append("y%d"%(j))
-
-		for j in range(Y_MAX_VARS):
-			sols[j].printSol(ynames[Y_MAX_VARS-j-1],xnames,syntax)
-		
-		if info:
-			for j in range(Y_MAX_VARS):
-				sols[j].printInfo(ynames[Y_MAX_VARS-j-1])
+	
 
 	

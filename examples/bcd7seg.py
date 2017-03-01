@@ -2,13 +2,10 @@
 # encoding: UTF-8
 
 from logicmin.tt import TT
-from logicmin.sol import Sol
 
 def main():
 	t = TT(4,7);
-
 	# b3 b2 b1 b0  | a b c d e f g 
-	
 	t.addRow("0000","1111110") 
 	t.addRow("0001","0110000") 
 	t.addRow("0010","1101101") 
@@ -25,10 +22,8 @@ def main():
 	t.addRow("1101","-------") 
 	t.addRow("1110","-------") 
 	t.addRow("1111","-------") 
-
-	sols = t.Solve()
-
-	Sol.printN(sols, xnames=['b3','b2','b1','b0'], ynames=['a','b','c','d','e','f','g'])
+	sols = t.solve()
+	sols.printN( xnames=['b3','b2','b1','b0'], ynames=['a','b','c','d','e','f','g'])
 
 
 if __name__ == "__main__":

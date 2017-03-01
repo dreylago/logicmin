@@ -1,7 +1,10 @@
 import minterm, logic, random;
+from multisol import MultiSol
 from sol import Sol
 from cube import *
 
+# Truth table
+# 
 class TT:
 	def __init__(self, X_MAX_VARS, Y_MAX_VARS):
 		self.lst=[]
@@ -21,14 +24,13 @@ class TT:
 		yc = CombToCube(ys,self.Y_MAX_VARS)
 		self.addCubes(xc,yc)	
 
-	def Solve(self):
+	def solve(self):
 		self.mm = []
 		self.dc = []
-		sols = []
+		sols = MultiSol()
 		for j in range(self.Y_MAX_VARS):
 			self.mm.append([])
 			self.dc.append([])
-			sols.append([])
 
 		for (x,y) in self.lst:
 			for j in range(self.Y_MAX_VARS):
@@ -43,7 +45,7 @@ class TT:
 			m = self.mm[j]
 			dc = self.dc[j]
 #				print "j=",j,"m=",m,"dc=",dc
-			sols[j] = self.Solve1(m,dc)
+			sols.add(self.Solve1(m,dc))
 		return sols
 
 	def Solve1(self, m, dc):
@@ -51,8 +53,6 @@ class TT:
 		(Cubes, minimal, iterations) = logic.solve_PIT(Cubes,m)
 		return Sol(self.X_MAX_VARS,m,Cubes,comps,minimal,iterations)
 
-	
-	
 	
 		
 

@@ -2,8 +2,6 @@
 # encoding: UTF-8
 
 from logicmin.tt import TT
-from logicmin.sol import Sol
-from timeit import default_timer as timer
 
 def main():
 	t = TT(3,3);
@@ -17,13 +15,11 @@ def main():
 	t.addRow("110","111")
 	t.addRow("111","011")
 
-	start = timer()
-	sols = t.Solve()
-	end = timer()
 
-	Sol.printN(sols, info=True)
+	sols = t.solve()
 
-	print "Solved in %f s." % (end-start)
+	sols.printN(info=True)
+
 	
 
 if __name__ == "__main__":
