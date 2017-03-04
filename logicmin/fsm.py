@@ -17,7 +17,7 @@ class FSM:
 	assignment_cubes = {}
 
 	# states (list of str): name of the states
-	# N_BITS: number of bits of state codes
+	# N_BITS: number of bits for state codes
 	# VI_MAX_VARS: number of input variables
 	# VO_MAX_VARS: number of output variables
 	
@@ -40,14 +40,7 @@ class FSM:
 			co = CombToCube(vo,self.VO_MAX_VARS);
 			if not ss in self.t:
 				self.t[ss] = {}
-			self.t[ss][ci] = {'co':co,'nss':nss}
-
-	def assign(self):
-		for ss,h in self.t.iteritems():
-			for ci,data in h.iteritems():
-				data['sc'] = self.assignment_cubes[ss].Copy()
-				data['nsc'] = self.assignment_cubes[data['nss']].Copy()
-			
+			self.t[ss][ci] = {'co':co,'nss':nss}		
 	
 	# Assign binary codes to states
 	def assignCodes(self,assignment_codes):
@@ -65,8 +58,15 @@ class FSM:
 			ss = state[i]
 			code = vector[i]
 			self.assignment_cubes[ss]=num_to_cube(code,self.N_BITS)
+
+	def prepare(self):
+		for ss,h in self.t.iteritems():
+			for ci,data in h.iteritems():
+				data['sc'] = self.assignment_cubes[ss].Copy()
+				data['nsc'] = self.assignment_cubes[data['nss']].Copy()
 	
 	def solveD(self):
+		self.prepare()
 		x_max_vars = self.VI_MAX_VARS + self.N_BITS
 		y_max_vars = self.VO_MAX_VARS + self.N_BITS # ff-d
 #		print "x_max_vars=",x_max_vars,"y_max_vars=",y_max_vars
@@ -99,6 +99,7 @@ class FSM:
 
 	
 	def SolveJK(self):
+		self.prepare()
 		x_max_vars = self.VI_MAX_VARS + self.N_BITS
 		y_max_vars = self.VO_MAX_VARS + 2 * self.N_BITS # ff-jk
 		tt = TT(x_max_vars,y_max_vars)

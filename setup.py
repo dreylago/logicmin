@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='logicmin',
-      version='0.1.2',
+      version='0.1.3',
       description='Logic Minimization',
       url='http://github.com/dreylago/logicmin',
       author='Demetrio Rey',
