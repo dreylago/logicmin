@@ -4,14 +4,19 @@ import sys
 
 sys.path.insert(0, os.path.abspath('..'))
 
-execfile("../examples/full-adder.py")
-execfile("../examples/bcd7seg.py")
-execfile("../examples/solve1-tt.py")
-execfile("../examples/solve2-tt.py")
-execfile("../examples/solve3-tt.py")
-execfile("../examples/solve4-tt.py")
-execfile("../examples/solve5-tt.py")
-execfile("../examples/solve6-tt.py")
-execfile("../examples/counter.py")
+def testFile(path):
+    print("Testing %s" %(path))
+    execfile(path)
+    print("***")
+
+testFile("../examples/full-adder.py")
+testFile("../examples/bcd7seg.py")
+testFile("../examples/solve1-tt.py")
+testFile("../examples/solve2-tt.py")
+testFile("../examples/solve3-tt.py")
+testFile("../examples/solve4-tt.py")
+testFile("../examples/solve5-tt.py")
+testFile("../examples/solve6-tt.py")
+testFile("../examples/counter.py")
 
 

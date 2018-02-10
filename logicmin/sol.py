@@ -1,7 +1,6 @@
+# Logic minimization solution 
 from cube import *
 from sop import SOP
-
-# Logic minimization solution 
 
 class Sol(SOP):
 
@@ -14,7 +13,10 @@ class Sol(SOP):
 
 	def printSol(self, yname='y', xnames=None, syntax=None):
 		s = self.expr(xnames, syntax)
-		print "%s <= %s" % (yname, s)
+		return "%s <= %s" % (yname, s)
+
+	def __str__(self):
+		return self.printSol()
 
 	def printInfo(self, fname):
 		
@@ -31,14 +33,14 @@ class Sol(SOP):
 		for c in self.cubes:
 			s += s0 + c.Str();
 			s0 = ' '
-		print '%s: ------------------------' % (fname)
+		o = "%s: ------------------------\n" % (fname)
 		#print 'minterms: ', self.m;
 		#print "Cubes: %s" % (s)	
-		print "Cost minimal: %.1f. Canonical: %.1f (%.1f%%)" % (
+		o += "Cost minimal: %.1f. Canonical: %.1f (%.1f%%)\n" % (
 			min_cost,canonical_cost,r
 		)
-		print 'comps:', self.comps, ', iterations:', self.iterations, ', minimal?:', self.minimal;
-
+		o += "Comps: %d. Iterations: %d. Minimal: %s" % (self.comps, self.iterations, self.minimal)
+		return o
 	
 
 	

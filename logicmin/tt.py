@@ -1,10 +1,11 @@
+# Truth table
+# 
+
 import minterm, logic, random;
 from multisol import MultiSol
 from sol import Sol
 from cube import *
 
-# Truth table
-# 
 class TT:
 	def __init__(self, X_MAX_VARS, Y_MAX_VARS):
 		self.lst=[]
@@ -13,16 +14,18 @@ class TT:
 		self.mm = []  # list of list of minterms
 		self.dc = []  # list of list of don't care
 
+	def addRow(self, xs, ys):
+		xc = CombToCube(xs,self.X_MAX_VARS)
+		yc = CombToCube(ys,self.Y_MAX_VARS)
+		self.addCubes(xc,yc)	
+
 	def setCubeLst(lst):
 		self.lst = lst
 
 	def addCubes(self,xc,yc):
 		self.lst.append((xc,yc))
 	
-	def addRow(self, xs, ys):
-		xc = CombToCube(xs,self.X_MAX_VARS)
-		yc = CombToCube(ys,self.Y_MAX_VARS)
-		self.addCubes(xc,yc)	
+	
 
 	def solve(self):
 		self.mm = []

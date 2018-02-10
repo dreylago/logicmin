@@ -1,8 +1,9 @@
+# Logic minimization solution 
+# 
 from expr2l import Expr2L
 from expr2vhdl import Expr2VHDL
 from cube import *
 
-# Logic minimization solution 
 class SOP:
 
 	def __init__(self, X_MAX_VARS, cubes):
