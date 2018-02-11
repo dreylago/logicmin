@@ -10,12 +10,10 @@ Description
 
 LogicMin is a Python package that minimize boolean functions using the tabular method of minimization (Quine-McCluskey). An object represent a truth table to which rows are added. After all rows are added, call a solve function.The solve function returns the minimized Sum of Products. The sum of products can be printed or analyzed. 
 
-For more information, look into references
-[1]_[2]_.
+For more information, look into references:
 
-.. [1] Edward J. McCluskey. 1986. Logic Design Principles with Emphasis on Testable Semicustom Circuits. Prentice-Hall, Inc., Upper Saddle River, NJ, USA. 
-
-.. [2] John F. Wakerly. 1989. Digital Design Principles and Practices. Prentice-Hall, Inc., Upper Saddle River, NJ, USA.
+	- Edward J. McCluskey. 1986. Logic Design Principles with Emphasis on Testable Semicustom Circuits. Prentice-Hall, Inc., Upper Saddle River, NJ, USA. 
+	- John F. Wakerly. 1989. Digital Design Principles and Practices. Prentice-Hall, Inc., Upper Saddle River, NJ, USA.
 
 
 Full-adder
@@ -96,6 +94,10 @@ BCD to 7 segment converter
 	# Outputs minimized independently
 	sols = t.solve()
 	print(sols.printN( xnames=['b3','b2','b1','b0'], ynames=['a','b','c','d','e','f','g']))
+
+
+Output:
+
 
 .. code:: output
 
