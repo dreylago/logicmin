@@ -61,6 +61,8 @@ Get expression in VHDL syntax:
 
 	print(sols.printN(xnames=['Ci','a','b',ynames=['s','Co'], syntax='VHDL'))
 
+Output: 
+
 .. code:: output
 
 	Co <= a and b or Ci and b or Ci and a
@@ -147,6 +149,7 @@ Binary counter with hold
 Output:
 
 .. code:: output
+
 	Y <= Q0
 	D0 <= X'.Q0 + X.Q0'
 	D1 <= X.Q1'.Q0 + X'.Q1 + Q1.Q0'

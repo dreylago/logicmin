@@ -2,3 +2,4 @@
 *.pyo
 /dist/*
 /logicmin.egg-info/*
+README.pdf
