@@ -3,7 +3,6 @@ LogicMin: Logic Minimization in Python
 
 Minimize logic functions.
 
-|PyPI version|
 
 Description
 -----------
@@ -46,7 +45,7 @@ Full-adder
 
 Output:
 
-.. code:: output
+.. code:: 
 
 	Co <= a.b + Ci.b + Ci.a
 	s <= Ci'.a'.b + Ci'.a.b' + Ci.a'.b' + Ci.a.b
@@ -61,7 +60,7 @@ Get expression in VHDL syntax:
 
 Output: 
 
-.. code:: output
+.. code:: 
 
 	Co <= a and b or Ci and b or Ci and a
 	s <=  not(Ci) and  not(a) and b or  not(Ci) and a and  not(b) or Ci and  not(a) and  not(b) or Ci and a and b
@@ -99,7 +98,7 @@ BCD to 7 segment converter
 Output:
 
 
-.. code:: output
+.. code:: 
 
 	g <= b2'.b1 + b2.b1' + b2.b0' + b3
 	f <= b1'.b0' + b2.b1' + b2.b0' + b3
@@ -150,7 +149,7 @@ Binary counter with hold
 
 Output:
 
-.. code:: output
+.. code:: 
 
 	Y <= Q0
 	D0 <= X'.Q0 + X.Q0'
@@ -159,7 +158,7 @@ Output:
 The advantages of FSM objects are 
 
 	1. Names for the states 
-	2. Decouple code assignment from table initialization.
+	2. Decouple state code assignment from table initialization.
 
 Other examples
 --------------
@@ -169,7 +168,7 @@ Look into examples directory.
 Install
 -------
 
-.. code:: shell
+.. code:: 
 
  	pip install logicmin
 	
