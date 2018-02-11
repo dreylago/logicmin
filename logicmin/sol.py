@@ -33,7 +33,7 @@ class Sol(SOP):
 		for c in self.cubes:
 			s += s0 + c.Str();
 			s0 = ' '
-		o = "%s: ------------------------\n" % (fname)
+		o = "%s: -----------------------\n" % (fname)
 		#print 'minterms: ', self.m;
 		#print "Cubes: %s" % (s)	
 		o += "Cost minimal: %.1f. Canonical: %.1f (%.1f%%)\n" % (

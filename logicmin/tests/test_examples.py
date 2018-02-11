@@ -3,7 +3,7 @@ import sys
 from past.builtins import execfile
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-sys.path.insert(0, dir_path + '/..')
+sys.path.insert(0, dir_path  + '/../..')
 
 def testFile(path):
     print("Testing %s" %(path))
