@@ -1,10 +1,12 @@
-# Finite-state machine
+import logicmin
+
+
+# state machine
 # x=0 => hold
 # x=1 => binary up count
 # y = 1 in states: e1 and e3
 
-import logicmin
-
+# Finite state machine with 
 # state labels
 states = ['e0','e1','e2','e3']
 # 2 bits for state codes
