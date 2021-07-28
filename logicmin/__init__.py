@@ -1,2 +1,2 @@
-from logicmin.tt import *
-from logicmin.fsm import *
+from logicmin.tt import TT
+from logicmin.fsm import FSM
