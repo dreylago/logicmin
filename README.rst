@@ -56,7 +56,7 @@ Get expression in VHDL syntax:
 
 .. code:: python
 
-	print(sols.printN(xnames=['Ci','a','b',ynames=['s','Co'], syntax='VHDL'))
+	print(sols.printN(xnames=['Ci','a','b'],ynames=['s','Co'], syntax='VHDL'))
 
 Output: 
 
