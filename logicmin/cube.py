@@ -146,6 +146,29 @@ class Cube:
 			out = ["'1'","'0'"][sum==True]
 		return out
 
+	def verilog( self, names = (), sum=False):
+		out = ""
+		lnames = list(names)
+		lnames.reverse()
+		t = self.t
+		f = self.f
+		for b in range(self.MAX_VARS):
+			name = "X" + str(b)
+			if len(lnames)>b:
+				name = lnames[b]
+			sep = ""
+			if out:
+				sep = [" & "," | "][sum==True]
+			if t & 1:
+				out = name + sep + out
+			elif f & 1:
+				out = "~" + name + "" + sep + out
+			t = t >> 1
+			f = f >> 1
+		if out == '':
+			out = ["'1'","'0'"][sum==True]
+		return out
+
 	def __str__( self ):
 		return self.Str()
 

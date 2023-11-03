@@ -25,4 +25,7 @@ print(sols.printN(xnames=['Ci','a','b'], ynames=['s','Co'], info=True))
 print("In VHDL:\n")
 # print solution in VHDL
 print(sols.printN(xnames=['Ci','a','b'], ynames=['s','Co'], syntax='VHDL'))
+print("\nIn Verilog:\n")
+# print solution in Verilog
+print(sols.printN(xnames=['Ci','a','b'], ynames=['s','Co'], syntax='Verilog'))
 
