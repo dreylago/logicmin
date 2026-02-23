@@ -4,3 +4,4 @@
 /logicmin.egg-info/*
 README.pdf
 /build/*
+/.venv/*
