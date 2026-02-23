@@ -5,11 +5,11 @@ from codecs import open
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='logicmin',
-      version='0.4.0',
+      version='0.5.0',
       description='Logic Minimization',
       url='http://github.com/dreylago/logicmin',
       author='Demetrio Rey',
@@ -30,5 +30,6 @@ setup(name='logicmin',
         'Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)',
       ],
       long_description=long_description,
+      long_description_content_type='text/markdown',
       include_package_data=True,
       )

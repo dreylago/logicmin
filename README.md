@@ -16,7 +16,7 @@ For more information, look into references:
 
 ## Full-adder
 
-```python 
+```python
 
 	# Full-adder
 	import logicmin
@@ -43,7 +43,7 @@ For more information, look into references:
 
 Output:
 
-```txt 
+```txt
 	Co <= a.b + Ci.b + Ci.a
 	s <= Ci'.a'.b + Ci'.a.b' + Ci.a'.b' + Ci.a.b
 ```
@@ -55,11 +55,24 @@ Get expression in VHDL syntax:
 	print(sols.printN(xnames=['Ci','a','b'],ynames=['s','Co'], syntax='VHDL'))
 ```
 
-Output: 
+Output:
 
 ```txt
 	Co <= a and b or Ci and b or Ci and a
 	s <=  not(Ci) and  not(a) and b or  not(Ci) and a and  not(b) or Ci and  not(a) and  not(b) or Ci and a and b
+```
+
+
+Get expression in Verilog syntax:
+
+```python
+	print(sols.printN(xnames=['Ci','a','b'],ynames=['s','Co'], syntax='Verilog'))
+```
+Output:
+
+```txt
+	Co <= a & b | Ci & b | Ci & a
+	s <= ~Ci & ~a & b | ~Ci & a & ~b | Ci & ~a & ~b | Ci & a & b
 ```
 
 ## BCD to 7 segment converter
@@ -106,12 +119,12 @@ Output:
 
 ## Finite-state machines
 
-For finite-state machines, a FSM object is provided. 
+For finite-state machines, a FSM object is provided.
 
 The advantages of FSM objects are:
 
 	1. States can have meaningful names.
-	2. It is possible to try different state code assignments to evaluate result complexity. 
+	2. It is possible to try different state code assignments to evaluate result complexity.
 
 
 ###  Binary counter with hold
@@ -164,5 +177,5 @@ Look into `examples` directory.
 
 ```sh
  	pip install logicmin
-```	
+```
 
