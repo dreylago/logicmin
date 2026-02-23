@@ -1,11 +1,10 @@
-LogicMin: Logic Minimization in Python
-======================================
+# LogicMin: Logic Minimization in Python
+
 
 Minimize logic functions.
 
 
-Description
------------
+## Description
 
 LogicMin is a Python package that minimize boolean functions using the tabular method of minimization (Quine-McCluskey). An object represent a truth table to which rows are added. After all rows are added, call a solve function.The solve function returns the minimized Sum of Products. The sum of products can be printed or analyzed. 
 
@@ -15,10 +14,9 @@ For more information, look into references:
 	- John F. Wakerly. 1989. Digital Design Principles and Practices. Prentice-Hall, Inc., Upper Saddle River, NJ, USA.
 
 
-Full-adder
-----------
+## Full-adder
 
-.. code:: python 
+```python
 
 	# Full-adder
 	import logicmin
@@ -40,49 +38,47 @@ Full-adder
 	# print solution mapped to var names (xnames=inputs, ynames=outputs)
 	# add debug information
 	print(sols.printN(xnames=['Ci','a','b'],ynames=['s','Co'], info=True))
-
+```
 
 
 Output:
 
-.. code:: 
-
+```txt
 	Co <= a.b + Ci.b + Ci.a
 	s <= Ci'.a'.b + Ci'.a.b' + Ci.a'.b' + Ci.a.b
-
+```
 
 
 Get expression in VHDL syntax:
 
-.. code:: python
-
+```python
 	print(sols.printN(xnames=['Ci','a','b'],ynames=['s','Co'], syntax='VHDL'))
+```
 
-Output: 
+Output:
 
-.. code:: 
-
+```txt
 	Co <= a and b or Ci and b or Ci and a
 	s <=  not(Ci) and  not(a) and b or  not(Ci) and a and  not(b) or Ci and  not(a) and  not(b) or Ci and a and b
+```
+
 
 Get expression in Verilog syntax:
 
-.. code:: python
-
+```python
 	print(sols.printN(xnames=['Ci','a','b'],ynames=['s','Co'], syntax='Verilog'))
+```
+Output:
 
-Output: 
-
-.. code:: 
-
+```txt
 	Co <= a & b | Ci & b | Ci & a
 	s <= ~Ci & ~a & b | ~Ci & a & ~b | Ci & ~a & ~b | Ci & a & b
+```
 
-BCD to 7 segment converter
---------------------------
+## BCD to 7 segment converter
 
-.. code:: python
 
+```python
 	# BCD-8421 to 7 segment
 	import logicmin
 	t = logicmin.TT(4,7);
@@ -106,13 +102,12 @@ BCD to 7 segment converter
 	# Outputs minimized independently
 	sols = t.solve()
 	print(sols.printN( xnames=['b3','b2','b1','b0'], ynames=['a','b','c','d','e','f','g']))
-
+```
 
 Output:
 
 
-.. code:: 
-
+```txt
 	g <= b2'.b1 + b2.b1' + b2.b0' + b3
 	f <= b1'.b0' + b2.b1' + b2.b0' + b3
 	e <= b2'.b0' + b1.b0'
@@ -120,18 +115,21 @@ Output:
 	c <= b1' + b0 + b2
 	b <= b1'.b0' + b1.b0 + b2'
 	a <= b2'.b0' + b1.b0 + b2.b0 + b3
+```
+
+## Finite-state machines
+
+For finite-state machines, a FSM object is provided.
+
+The advantages of FSM objects are:
+
+	1. States can have meaningful names.
+	2. It is possible to try different state code assignments to evaluate result complexity.
 
 
-Finite-state machines
----------------------
+###  Binary counter with hold
 
-For finite-state machines, use the FSM object. 
-
-Binary counter with hold
-------------------------
-
-.. code:: python
-
+```python
 	# Finite-state machine
 	# x=0 => hold
 	# x=1 => binary up count
@@ -159,30 +157,25 @@ Binary counter with hold
 	sols = m.solveD()
 	# print solution with input and output names
 	print(sols.printN(xnames=['X','Q1','Q0'], ynames=['D1','D0','Y']))
+```
 
 Output:
 
-.. code:: 
-
+```txt
 	Y <= Q0
 	D0 <= X'.Q0 + X.Q0'
 	D1 <= X.Q1'.Q0 + X'.Q1 + Q1.Q0'
+```
 
-The advantages of FSM objects are 
 
-	1. Names for the states 
-	2. Decouple state code assignment from table initialization.
+### Other examples
 
-Other examples
---------------
+Look into `examples` directory.
 
-Look into examples directory.
+### Install
 
-Install
--------
 
-.. code:: 
-
+```sh
  	pip install logicmin
-	
+```
 
