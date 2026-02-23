@@ -65,6 +65,19 @@ Output:
 	Co <= a and b or Ci and b or Ci and a
 	s <=  not(Ci) and  not(a) and b or  not(Ci) and a and  not(b) or Ci and  not(a) and  not(b) or Ci and a and b
 
+Get expression in Verilog syntax:
+
+.. code:: python
+
+	print(sols.printN(xnames=['Ci','a','b'],ynames=['s','Co'], syntax='Verilog'))
+
+Output: 
+
+.. code:: 
+
+	Co <= a & b | Ci & b | Ci & a
+	s <= ~Ci & ~a & b | ~Ci & a & ~b | Ci & ~a & ~b | Ci & a & b
+
 BCD to 7 segment converter
 --------------------------
 

@@ -2,6 +2,7 @@
 # 
 from logicmin.expr2l import Expr2L
 from logicmin.expr2vhdl import Expr2VHDL
+from logicmin.expr2verilog import Expr2Verilog
 from logicmin.cube import *
 
 class SOP:
@@ -20,6 +21,8 @@ class SOP:
 			SOP = Expr2L(self.cubes, xnames)
 		elif syntax=='VHDL':
 			SOP = Expr2VHDL(self.cubes, xnames)
+		elif syntax=='Verilog':
+			SOP = Expr2Verilog(self.cubes, xnames)
 		else:
 			SOP = Expr2L(self.cubes, xnames)
 		return SOP
